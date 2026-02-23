@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Alacal Ordering Portal</title>
+
+<style>
+body{
+font-family: Arial;
+margin:0;
+background:#f2f2f2;
+}
+
+.topbar{
+background:#d9823b;
+color:white;
+padding:14px 30px;
+display:flex;
+justify-content:space-between;
+}
+
+.menu a{
+margin-right:20px;
+color:white;
+text-decoration:none;
+font-weight:500;
+}
+
+.products{
+max-width:1200px;
+margin:auto;
+padding:40px;
+}
+
+.products h1{
+color:#333;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
+margin-top:30px;
+}
+
+.card{
+text-align:center;
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:contain;
+background:white;
+padding:10px;
+}
+
+.price{
+color:#e3702c;
+font-size:20px;
+margin:10px 0;
+}
+
+button{
+background:#1e2e4f;
+color:white;
+border:none;
+padding:10px 20px;
+cursor:pointer;
+}
+
+select{
+margin:10px 0;
+padding:8px;
+width:100%;
+}
+
+.cart{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#1e2e4f;
+color:white;
+padding:14px;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="topbar">
+<div class="menu">
+<a href="#">Home</a>
+<a href="#">Shop</a>
+<a href="#">Locations</a>
+<a href="#">Help Center</a>
+</div>
+
+<div>
+<strong>Alacal Ordering Portal</strong>
+</div>
+</div>
+
+<div class="products">
+
+<h1>PRODUCTS</h1>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://via.placeholder.com/300">
+<h3>Mesh Snapback Hat</h3>
+<div class="price">$11.00</div>
+<button onclick="addToCart('Hat',11)">Add to cart</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/300">
+<h3>Flexfit Twill Cap</h3>
+<div class="price">$11.00</div>
+
+<select>
+<option>Black</option>
+<option>Orange</option>
+</select>
+
+<button onclick="addToCart('Cap',11)">Select options</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/300">
+<h3>Pullover Hoodie</h3>
+<div class="price">$23 - $25</div>
+
+<select>
+<option>Small</option>
+<option>Medium</option>
+<option>Large</option>
+<option>XL</option>
+</select>
+
+<button onclick="addToCart('Hoodie',25)">Select options</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/300">
+<h3>Work Shirt</h3>
+<div class="price">$18</div>
+
+<select>
+<option>Small</option>
+<option>Medium</option>
+<option>Large</option>
+</select>
+
+<button onclick="addToCart('Shirt',18)">Select options</button>
+</div>
+
+</div>
+
+</div>
+
+<div class="cart" onclick="openCart()">
+Checkout (<span id="count">0</span>)
+</div>
+
+<script>
+let cartCount=0;
+
+function addToCart(name,price){
+cartCount++;
+document.getElementById("count").innerText=cartCount;
+alert(name + " added to cart");
+}
+
+function openCart(){
+alert("Checkout system can be connected to Stripe later.");
+}
+</script>
+
+</body>
+</html>
