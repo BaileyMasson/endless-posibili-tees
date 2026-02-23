@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Endless Posibili-Tees - Ordering Portal</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#fff;color:#111;}
+header{display:flex;justify-content:space-between;padding:18px 30px;border-bottom:1px solid #eee;}
+.logo{font-size:20px;font-weight:bold;}
+.portal-btn{background:black;color:white;padding:10px 18px;text-decoration:none;}
+.hero{text-align:center;padding:60px 20px;background:#f5f5f5;}
+.products{max-width:1100px;margin:auto;padding:30px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;}
+.product{border:1px solid #eee;padding:15px;}
+.product img{width:100%;height:240px;object-fit:cover;}
+button{width:100%;padding:10px;background:black;color:white;border:none;cursor:pointer;}
+select{width:100%;padding:8px;margin-top:8px;margin-bottom:8px;}
+.cart{position:fixed;right:20px;bottom:20px;background:black;color:white;padding:15px;cursor:pointer;}
+.checkout{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:white;padding:40px;overflow:auto;}
+input{display:block;width:100%;padding:10px;margin-bottom:15px;}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">Endless Posibili-Tees</div>
+<a class="portal-btn" href="#shop">Alacal Ordering Portal</a>
+</header>
+<section class="hero">
+<h1>Official Ordering Portal</h1>
+<p>Clothing & Custom Prints</p>
+</section>
+<section id="shop" class="products">
+<h2>Products</h2>
+<div class="grid">
+<div class="product">
+<img src="https://via.placeholder.com/400">
+<h3>Logo T-Shirt</h3>
+<p>$25</p>
+<select class="option">
+<option>Small</option><option>Medium</option><option>Large</option><option>XL</option>
+</select>
+<button onclick="addToCart('Logo T-Shirt',25)">Add to Cart</button>
+</div>
+<div class="product">
+<img src="https://via.placeholder.com/400">
+<h3>Hoodie</h3>
+<p>$45</p>
+<select class="option">
+<option>Small</option><option>Medium</option><option>Large</option><option>XL</option>
+</select>
+<button onclick="addToCart('Hoodie',45)">Add to Cart</button>
+</div>
+<div class="product">
+<img src="https://via.placeholder.com/400">
+<h3>Custom Print Poster</h3>
+<p>$30</p>
+<select class="option">
+<option>12x18</option><option>18x24</option><option>24x36</option>
+</select>
+<button onclick="addToCart('Poster',30)">Add to Cart</button>
+</div>
+</div>
+</section>
+<div class="cart" onclick="openCheckout()">Checkout (<span id="count">0</span>)</div>
+<div class="checkout" id="checkout">
+<h2>Checkout</h2>
+<div id="cartItems"></div>
+<h3>Total: $<span id="total">0</span></h3>
+<h3>Customer Info</h3>
+<input placeholder="Full Name">
+<input placeholder="Email">
+<input placeholder="Address">
+<button onclick="placeOrder()">Place Order</button>
+<button onclick="closeCheckout()">Close</button>
+</div>
+<script>
+let cart=[];let total=0;
+function addToCart(name,price){cart.push({name,price});total+=price;document.getElementById("count").innerText=cart.length;}
+function openCheckout(){document.getElementById("checkout").style.display="block";let list="";cart.forEach(item=>{list+=`<p>${item.name} - $${item.price}</p>`;});document.getElementById("cartItems").innerHTML=list;document.getElementById("total").innerText=total;}
+function closeCheckout(){document.getElementById("checkout").style.display="none";}
+function placeOrder(){alert("Order submitted! Connect Stripe later.");}
+</script>
+</body>
+</html>
